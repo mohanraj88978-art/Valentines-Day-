@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b6b, #c92a2a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+            animation: float 3s ease-in-out infinite;
+            border: 3px solid #ffd700;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .heart {
+            font-size: 120px;
+            cursor: pointer;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            35% { transform: scale(1); }
+            45% { transform: scale(1.2); }
+            55% { transform: scale(1); }
+        }
+        
+        h1 {
+            color: #c92a2a;
+            font-size: 4rem;
+            margin: 0.5rem 0;
+            text-shadow: 3px 3px 0px #ffb3b3;
+            letter-spacing: 2px;
+        }
+        
+        .sherin-name {
+            color: #ff1493;
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 0px #ffb6c1;
+           
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #ff69b4; }
+            50% { text-shadow: 0 0 20px #ff1493, 0 0 30px #ff69b4; }
+        }
+        
+        .message {
+            color: #333;
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+        
+        .personal-message {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 2px solid #ff69b4;
+        }
+        
+        .personal-message p {
+            color: #c92a2a;
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+        
+        .signature {
+            color: #666;
+            font-size: 1.3rem;
+            font-style: italic;
+            border-top: 2px solid #ff69b4;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .rose {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            animation: spin 10s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .button {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s;
+            border: 2px solid #ff1493;
+            font-weight: bold;
+        }
+        
+        .button:hover {
+            background: white;
+            color: #ff1493;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff69b4;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 4s linear forwards;
+        }
+        
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .love-counter {
+            font-size: 1.2rem;
+            color: #ff1493;
+            margin: 10px 0;
+        }
+        
+        .sherin-highlight {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="card">
+        <div class="sherin-highlight">💝 For You 💝</div>
+        <div class="sherin-name">CHELLO</div>
+        <div class="heart" onclick="createFloatingHearts(30)">❤️</div>
+        <h1>Happy Valentine's Day!</h1>
+        
+        <div class="message">
+            <div class="personal-message">
+                <p>✨ My Dearest Sherin ✨</p>
+                <p>💕 Every moment with you is magical<br>
+                   🥰 Your smile lights up my world<br>
+                   💑 You're the most beautiful person I know<br>
+                   💖 My heart beats only for you</p>
+            </div>
+        </div>
+        
+        <div class="rose">🌸</div>
+        
+        <div class="love-counter" id="loveCounter"></div>
+        
+        <button class="button" onclick="showSherinMessage()">
+            Click for Sherin's Special Message 💌
+        </button>
+        
+        <div id="sherinMessage" style="display: none; margin: 20px 0; padding: 25px; background: #ffe4e1; border-radius: 20px; border: 3px solid #ff69b4;">
+            <p style="font-size: 1.6rem; color: #c92a2a; font-weight: bold;">
+                ✨ For SHERIN - My One and Only ✨
+            </p>
+            <p style="font-size: 1.3rem; color: #ff1493;">
+                💝 You are the reason my heart smiles<br>
+                💗 Every day with you is Valentine's Day<br>
+                💓 You're my dream come true<br>
+                💕 Forever yours, always and always<br>
+                🌹 With love and lots of hugs! 🌹
+            </p>
+            <p style="font-size: 1.5rem;">❤️ </p>
+        </div>
+        
+        <div class="signature">
+            With all my love, always and forever,<br>
+            <strong></strong> 💕<br>
+            <span style="font-size: 1rem;">Sherin, you're the best thing that ever happened to me! 💝</span>
+        </div>
+    </div>
+
+    <script>
+        function createFloatingHearts(count = 20) {
+            const container = document.getElementById('floatingHearts');
+            const sherinHearts = ['❤️', '💕', '💗', '💓', '💖', '💘', '💝', '', '', '🌹'];
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = sherinHearts[Math.floor(Math.random() * sherinHearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+            
+            // Update love counter
+            let counter = document.getElementById('loveCounter');
+            let count2 = parseInt(counter.innerHTML.replace(/[^0-9]/g, '') || 0) + count;
+            counter.innerHTML = '❤️ ' + count2 + ' hearts sent to Sherin! ❤️';
+        }
+        
+        function showSherinMessage() {
+            const message = document.getElementById('sherinMessage');
+            if (message.style.display === 'none') {
+                message.style.display = 'block';
+                createFloatingHearts(30);
+                // Play romantic vibe with color change
+                document.body.style.background = 'linear-gradient(135deg, #ff1493, #8b0000)';
+                setTimeout(() => {
+                    document.body.style.background = 'linear-gradient(135deg, #ff6b6b, #c92a2a)';
+                }, 2000);
+            } else {
+                message.style.display = 'none';
+            }
+        }
+        
+        // Create name animation
+        function animateSherin() {
+            const nameElement = document.querySelector('.sherin-name');
+            const name = 'SHERIN';
+            let index = 0;
+            
+            setInterval(() => {
+                if (index < name.length) {
+                    nameElement.style.color = ['#ff69b4', '#ff1493', '#c92a2a', '#ff6b6b'][Math.floor(Math.random() * 4)];
+                    index++;
+                } else {
+                    index = 0;
+                }
+            }, 500);
+        }
+        
+        // Initialize
+        window.onload = function() {
+            createFloatingHearts(20);
+            animateSherin();
+            
+            // Initialize love counter
+            document.getElementById('loveCounter').innerHTML = '❤️ 20 hearts sent to Sherin! ❤️';
+            
+            // Repeat floating hearts
+            setInterval(() => {
+                createFloatingHearts(8);
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
